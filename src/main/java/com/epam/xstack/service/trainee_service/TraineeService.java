@@ -8,9 +8,11 @@ import com.epam.xstack.model.dto.trainee.reuest.GetTraineeProfileRequestDTO;
 import com.epam.xstack.model.dto.trainee.reuest.TraineeRegistrationRequestDTO;
 import com.epam.xstack.model.dto.trainee.reuest.UpdateTraineeProfileRequestDTO;
 
+import java.util.UUID;
+
 public interface TraineeService {
     TraineeRegistrationResponseDTO saveTrainee(TraineeRegistrationRequestDTO requestDTO);
-    GetTraineeProfileResponseDTO selectTraineeProfileByUserName(Long id, GetTraineeProfileRequestDTO requestDTO);
-    UpdateTraineeProfileResponseDTO updateTraineeProfile(Long id, UpdateTraineeProfileRequestDTO requestDTO);
-    DeleteResponseDTO deleteTraineeByUserName(Long id, GetTraineeProfileRequestDTO requestDTO);
+    GetTraineeProfileResponseDTO selectTraineeProfileByUserName(UUID id, GetTraineeProfileRequestDTO requestDTO);
+    UpdateTraineeProfileResponseDTO updateTraineeProfile(UUID id, UpdateTraineeProfileRequestDTO requestDTO);
+    DeleteResponseDTO deleteTraineeByUserName(UUID id, GetTraineeProfileRequestDTO requestDTO);
 }

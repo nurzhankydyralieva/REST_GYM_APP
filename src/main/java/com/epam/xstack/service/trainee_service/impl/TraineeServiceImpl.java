@@ -12,6 +12,8 @@ import com.epam.xstack.service.trainee_service.TraineeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class TraineeServiceImpl implements TraineeService {
@@ -23,17 +25,17 @@ public class TraineeServiceImpl implements TraineeService {
     }
 
     @Override
-    public GetTraineeProfileResponseDTO selectTraineeProfileByUserName(Long id, GetTraineeProfileRequestDTO requestDTO) {
+    public GetTraineeProfileResponseDTO selectTraineeProfileByUserName(UUID id, GetTraineeProfileRequestDTO requestDTO) {
         return traineeDAO.selectTraineeProfileByUserName(id, requestDTO);
     }
 
     @Override
-    public UpdateTraineeProfileResponseDTO updateTraineeProfile(Long id, UpdateTraineeProfileRequestDTO requestDTO) {
+    public UpdateTraineeProfileResponseDTO updateTraineeProfile(UUID id, UpdateTraineeProfileRequestDTO requestDTO) {
         return traineeDAO.updateTraineeProfile(id, requestDTO);
     }
 
     @Override
-    public DeleteResponseDTO deleteTraineeByUserName(Long id, GetTraineeProfileRequestDTO requestDTO) {
+    public DeleteResponseDTO deleteTraineeByUserName(UUID id, GetTraineeProfileRequestDTO requestDTO) {
         return traineeDAO.deleteTraineeByUserName(id, requestDTO);
     }
 }

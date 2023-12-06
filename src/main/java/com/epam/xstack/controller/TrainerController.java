@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/trainers")
 @RequiredArgsConstructor
@@ -19,7 +21,7 @@ public class TrainerController {
     private final TrainerService trainerService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetTrainerProfileResponseDTO> selectTrainerProfile(@PathVariable("id") Long id, @RequestBody GetTrainerProfileRequestDTO requestDTO) {
+    public ResponseEntity<GetTrainerProfileResponseDTO> selectTrainerProfile(@PathVariable("id") UUID id, @RequestBody GetTrainerProfileRequestDTO requestDTO) {
         return new ResponseEntity<>(trainerService.selectTrainerProfileByUserName(id, requestDTO), HttpStatus.OK);
     }
 
@@ -30,7 +32,7 @@ public class TrainerController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<UpdateTrainerProfileResponseDTO> updateUser(@PathVariable("id") Long id, @RequestBody UpdateTrainerProfileRequestDTO requestDTO) {
+    public ResponseEntity<UpdateTrainerProfileResponseDTO> updateUser(@PathVariable("id") UUID id, @RequestBody UpdateTrainerProfileRequestDTO requestDTO) {
         return new ResponseEntity<>(trainerService.updateTrainerProfile(id, requestDTO), HttpStatus.OK);
     }
 

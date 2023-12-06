@@ -6,14 +6,16 @@ import com.epam.xstack.model.dto.trainee.reuest.TraineeRegistrationRequestDTO;
 import com.epam.xstack.model.dto.trainee.reuest.UpdateTraineeProfileRequestDTO;
 import com.epam.xstack.model.dto.trainee.reuest.UpdateTrainee_sTrainerListRequestDTO;
 
+import java.util.UUID;
+
 public interface TraineeDAO {
     TraineeRegistrationResponseDTO saveTrainee(TraineeRegistrationRequestDTO requestDTO);
 
-    GetTraineeProfileResponseDTO selectTraineeProfileByUserName(Long id, GetTraineeProfileRequestDTO requestDTO);
+    GetTraineeProfileResponseDTO selectTraineeProfileByUserName(UUID id, GetTraineeProfileRequestDTO requestDTO);
 
-    UpdateTraineeProfileResponseDTO updateTraineeProfile(Long id, UpdateTraineeProfileRequestDTO requestDTO);
+    UpdateTraineeProfileResponseDTO updateTraineeProfile(UUID id, UpdateTraineeProfileRequestDTO requestDTO);
 
-    DeleteResponseDTO deleteTraineeByUserName(Long id, GetTraineeProfileRequestDTO requestDTO);
-    UpdateTrainee_sTrainerListResponseDTO updateTrainee_sTrainerList(Long id, UpdateTrainee_sTrainerListRequestDTO requestDTO);
+    DeleteResponseDTO deleteTraineeByUserName(UUID id, GetTraineeProfileRequestDTO requestDTO);
+    UpdateTrainee_sTrainerListResponseDTO updateTrainee_sTrainerList(UUID id, UpdateTrainee_sTrainerListRequestDTO requestDTO);
 
 }

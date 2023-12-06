@@ -15,6 +15,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 @Component
 @RequiredArgsConstructor
 public class AuthenticationDAOImpl implements AuthenticationDAO {
@@ -24,7 +26,7 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
 
     @Override
     @Transactional
-    public AuthenticationResponseDTO authenticateLogin(Long id, AuthenticationRequestDTO requestDTO) {
+    public AuthenticationResponseDTO authenticateLogin(UUID id, AuthenticationRequestDTO requestDTO) {
         Session session = sessionFactory.getCurrentSession();
         User user = mapper.toEntity(requestDTO);
         User userId = session.get(User.class, id);
@@ -43,7 +45,7 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
 
     @Override
     @Transactional
-    public AuthenticationResponseDTO authenticationChangeLogin(Long id, AuthenticationChangeLoginRequestDTO requestDTO) {
+    public AuthenticationResponseDTO authenticationChangeLogin(UUID id, AuthenticationChangeLoginRequestDTO requestDTO) {
         Session session = sessionFactory.getCurrentSession();
         Trainer trainerToBeUpdated = session.get(Trainer.class, id);
 

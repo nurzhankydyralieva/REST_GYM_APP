@@ -7,8 +7,10 @@ import com.epam.xstack.model.dto.trainer.reuest.GetTrainerProfileRequestDTO;
 import com.epam.xstack.model.dto.trainer.reuest.TrainerRegistrationRequestDTO;
 import com.epam.xstack.model.dto.trainer.reuest.UpdateTrainerProfileRequestDTO;
 
+import java.util.UUID;
+
 public interface TrainerService {
     TrainerRegistrationResponseDTO saveTrainer(TrainerRegistrationRequestDTO requestDTO);
-    GetTrainerProfileResponseDTO selectTrainerProfileByUserName(Long id, GetTrainerProfileRequestDTO requestDTO);
-    UpdateTrainerProfileResponseDTO updateTrainerProfile(Long id, UpdateTrainerProfileRequestDTO requestDTO);
+    GetTrainerProfileResponseDTO selectTrainerProfileByUserName(UUID id, GetTrainerProfileRequestDTO requestDTO);
+    UpdateTrainerProfileResponseDTO updateTrainerProfile(UUID id, UpdateTrainerProfileRequestDTO requestDTO);
 }

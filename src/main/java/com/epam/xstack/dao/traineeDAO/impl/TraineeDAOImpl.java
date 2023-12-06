@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Random;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -37,7 +38,7 @@ public class TraineeDAOImpl implements TraineeDAO {
     //TODO check mapper 11. Update Trainee's Trainer List
     @Override
     @Transactional
-    public UpdateTrainee_sTrainerListResponseDTO updateTrainee_sTrainerList(Long id, UpdateTrainee_sTrainerListRequestDTO requestDTO) {
+    public UpdateTrainee_sTrainerListResponseDTO updateTrainee_sTrainerList(UUID id, UpdateTrainee_sTrainerListRequestDTO requestDTO) {
         Session session = sessionFactory.getCurrentSession();
         Trainee trainee = updateTrainee_sTrainerListRequestMapper.toEntity(requestDTO);
         Trainee traineeToBeUpdated = session.get(Trainee.class, id);
@@ -59,7 +60,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 
     @Override
     @Transactional
-    public GetTraineeProfileResponseDTO selectTraineeProfileByUserName(Long id, GetTraineeProfileRequestDTO requestDTO) {
+    public GetTraineeProfileResponseDTO selectTraineeProfileByUserName(UUID id, GetTraineeProfileRequestDTO requestDTO) {
         Session session = sessionFactory.getCurrentSession();
         Trainee trainee = getTraineeProfileRequestMapper.toEntity(requestDTO);
         Trainee traineeId = session.get(Trainee.class, id);
@@ -84,7 +85,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 
     @Override
     @Transactional
-    public UpdateTraineeProfileResponseDTO updateTraineeProfile(Long id, UpdateTraineeProfileRequestDTO requestDTO) {
+    public UpdateTraineeProfileResponseDTO updateTraineeProfile(UUID id, UpdateTraineeProfileRequestDTO requestDTO) {
         Session session = sessionFactory.getCurrentSession();
         Trainee trainee = updateTraineeProfileRequestMapper.toEntity(requestDTO);
         Trainee traineeToBeUpdated = session.get(Trainee.class, id);
@@ -95,6 +96,7 @@ public class TraineeDAOImpl implements TraineeDAO {
         traineeToBeUpdated.setDateOfBirth(trainee.getDateOfBirth());
         traineeToBeUpdated.setAddress(trainee.getAddress());
         traineeToBeUpdated.setIsActive(trainee.getIsActive());
+        session.update(traineeToBeUpdated);
         updateTraineeProfileRequestMapper.toDto(trainee);
 
         return UpdateTraineeProfileResponseDTO
@@ -111,7 +113,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 
     @Override
     @Transactional
-    public DeleteResponseDTO deleteTraineeByUserName(Long id, GetTraineeProfileRequestDTO requestDTO) {
+    public DeleteResponseDTO deleteTraineeByUserName(UUID id, GetTraineeProfileRequestDTO requestDTO) {
         Session session = sessionFactory.getCurrentSession();
         Trainee trainee = getTraineeProfileRequestMapper.toEntity(requestDTO);
         Trainee traineeId = session.get(Trainee.class, id);

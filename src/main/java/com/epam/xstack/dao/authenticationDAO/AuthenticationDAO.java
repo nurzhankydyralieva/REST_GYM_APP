@@ -4,8 +4,10 @@ import com.epam.xstack.model.dto.authentication.AuthenticationChangeLoginRequest
 import com.epam.xstack.model.dto.authentication.AuthenticationRequestDTO;
 import com.epam.xstack.model.dto.authentication.AuthenticationResponseDTO;
 
-public interface AuthenticationDAO {
-    AuthenticationResponseDTO authenticateLogin(Long id, AuthenticationRequestDTO requestDTO);
+import java.util.UUID;
 
-    AuthenticationResponseDTO authenticationChangeLogin(Long id, AuthenticationChangeLoginRequestDTO requestDTO);
+public interface AuthenticationDAO {
+    AuthenticationResponseDTO authenticateLogin(UUID id, AuthenticationRequestDTO requestDTO);
+
+    AuthenticationResponseDTO authenticationChangeLogin(UUID id, AuthenticationChangeLoginRequestDTO requestDTO);
 }

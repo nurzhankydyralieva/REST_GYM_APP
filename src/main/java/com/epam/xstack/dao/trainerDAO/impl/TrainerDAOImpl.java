@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Random;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -34,7 +35,7 @@ public class TrainerDAOImpl implements TrainerDAO {
 
     @Override
     @Transactional
-    public UpdateTrainerProfileResponseDTO updateTrainerProfile(Long id, UpdateTrainerProfileRequestDTO requestDTO) {
+    public UpdateTrainerProfileResponseDTO updateTrainerProfile(UUID id, UpdateTrainerProfileRequestDTO requestDTO) {
         Session session = sessionFactory.getCurrentSession();
         Trainer trainer = updateTrainerProfileRequestMapper.toEntity(requestDTO);
         Trainer trainerToBeUpdated = session.get(Trainer.class, id);
@@ -43,6 +44,8 @@ public class TrainerDAOImpl implements TrainerDAO {
         trainerToBeUpdated.setFirstName(trainer.getFirstName());
         trainerToBeUpdated.setLastName(trainer.getLastName());
         trainerToBeUpdated.setIsActive(trainer.getIsActive());
+        session.update(trainerToBeUpdated);
+
         updateTrainerProfileRequestMapper.toDto(trainer);
         return UpdateTrainerProfileResponseDTO
                 .builder()
@@ -57,7 +60,7 @@ public class TrainerDAOImpl implements TrainerDAO {
 
     @Override
     @Transactional
-    public GetTrainerProfileResponseDTO selectTrainerProfileByUserName(Long id, GetTrainerProfileRequestDTO requestDTO) {
+    public GetTrainerProfileResponseDTO selectTrainerProfileByUserName(UUID id, GetTrainerProfileRequestDTO requestDTO) {
         Session session = sessionFactory.getCurrentSession();
         Trainer trainer = getTrainerProfileRequestMapper.toEntity(requestDTO);
         Trainer trainerId = session.get(Trainer.class, id);

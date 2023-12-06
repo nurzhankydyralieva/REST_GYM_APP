@@ -8,18 +8,20 @@ import com.epam.xstack.service.authentication_service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationDAO authenticationDAO;
 
     @Override
-    public AuthenticationResponseDTO authenticateLogin(Long id, AuthenticationRequestDTO requestDTO) {
+    public AuthenticationResponseDTO authenticateLogin(UUID id, AuthenticationRequestDTO requestDTO) {
         return authenticationDAO.authenticateLogin(id,requestDTO);
     }
 
     @Override
-    public AuthenticationResponseDTO authenticationChangeLogin(Long id, AuthenticationChangeLoginRequestDTO requestDTO) {
+    public AuthenticationResponseDTO authenticationChangeLogin(UUID id, AuthenticationChangeLoginRequestDTO requestDTO) {
       return   authenticationDAO.authenticationChangeLogin(id,requestDTO);
     }
 }

@@ -11,6 +11,8 @@ import com.epam.xstack.service.trainer_service.TrainerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class TrainerServiceImpl implements TrainerService {
@@ -22,12 +24,12 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
-    public GetTrainerProfileResponseDTO selectTrainerProfileByUserName(Long id, GetTrainerProfileRequestDTO requestDTO) {
+    public GetTrainerProfileResponseDTO selectTrainerProfileByUserName(UUID id, GetTrainerProfileRequestDTO requestDTO) {
         return trainerDAO.selectTrainerProfileByUserName(id, requestDTO);
     }
 
     @Override
-    public UpdateTrainerProfileResponseDTO updateTrainerProfile(Long id, UpdateTrainerProfileRequestDTO requestDTO) {
+    public UpdateTrainerProfileResponseDTO updateTrainerProfile(UUID id, UpdateTrainerProfileRequestDTO requestDTO) {
         return trainerDAO.updateTrainerProfile(id, requestDTO);
     }
 }
