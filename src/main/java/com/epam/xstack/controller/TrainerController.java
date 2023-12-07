@@ -19,6 +19,11 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class TrainerController {
     private final TrainerService trainerService;
+    @PostMapping("/save")
+    public ResponseEntity<TrainerRegistrationResponseDTO> saveTrainee(@RequestBody TrainerRegistrationRequestDTO requestDTO) {
+        return new ResponseEntity<>(trainerService.saveTrainer(requestDTO), HttpStatus.CREATED);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<GetTrainerProfileResponseDTO> selectTrainerProfile(@PathVariable("id") UUID id, @RequestBody GetTrainerProfileRequestDTO requestDTO) {
@@ -26,10 +31,6 @@ public class TrainerController {
     }
 
 
-    @PostMapping("/save")
-    public ResponseEntity<TrainerRegistrationResponseDTO> saveTrainee(@RequestBody TrainerRegistrationRequestDTO requestDTO) {
-        return new ResponseEntity<>(trainerService.saveTrainer(requestDTO), HttpStatus.CREATED);
-    }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<UpdateTrainerProfileResponseDTO> updateUser(@PathVariable("id") UUID id, @RequestBody UpdateTrainerProfileRequestDTO requestDTO) {

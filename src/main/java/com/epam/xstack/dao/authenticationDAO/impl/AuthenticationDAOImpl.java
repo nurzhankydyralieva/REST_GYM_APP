@@ -49,12 +49,17 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
         Session session = sessionFactory.getCurrentSession();
         Trainer trainerToBeUpdated = session.get(Trainer.class, id);
 
-        trainerToBeUpdated.setUserName(requestDTO.getUserName());
-        trainerToBeUpdated.setPassword(requestDTO.getNewPassword());
-        return AuthenticationResponseDTO
-                .builder()
-                .response("Login response")
-                .code(Code.STATUS_200_OK)
-                .build();
+        if (trainerToBeUpdated.getId() == id) {
+            trainerToBeUpdated.setUserName(requestDTO.getUserName());
+            trainerToBeUpdated.setPassword(requestDTO.getNewPassword());
+            session.update(trainerToBeUpdated);
+            return AuthenticationResponseDTO
+                    .builder()
+                    .response("Login change response")
+                    .code(Code.STATUS_200_OK)
+                    .build();
+        } else {
+            throw new RuntimeException("not available");
+        }
     }
 }

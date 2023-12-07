@@ -23,7 +23,7 @@ public class AuthenticationController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<AuthenticationResponseDTO> updateUser(@PathVariable("id") UUID id, @RequestBody AuthenticationChangeLoginRequestDTO requestDTO) {
+    public ResponseEntity<AuthenticationResponseDTO> updateLogin(@PathVariable("id") UUID id, @RequestBody AuthenticationChangeLoginRequestDTO requestDTO) {
         return new ResponseEntity<>(authenticationService.authenticationChangeLogin(id, requestDTO), HttpStatus.OK);
     }
 }

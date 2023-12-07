@@ -1,6 +1,7 @@
 package com.epam.xstack.mapper.authentication_mapper;
 
 import com.epam.xstack.model.dto.authentication.AuthenticationChangeLoginRequestDTO;
+import com.epam.xstack.model.entity.Trainee;
 import com.epam.xstack.model.entity.Trainer;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -10,8 +11,10 @@ import org.mapstruct.Mapping;
 public interface AuthenticationChangeLoginRequestMapper {
     @Mapping(target = "userName", source = "trainer.userName")
     @Mapping(target = "newPassword", source = "trainer.password")
+    @Mapping(target = "oldPassword", source = "trainer.password")
     AuthenticationChangeLoginRequestDTO toDto(Trainer trainer);
 
     @InheritInverseConfiguration
     Trainer toEntity(AuthenticationChangeLoginRequestDTO requestDTO);
+
 }

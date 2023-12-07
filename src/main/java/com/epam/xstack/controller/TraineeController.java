@@ -21,14 +21,14 @@ public class TraineeController {
     private final TraineeService traineeService;
     private final TraineeDAO traineeDAO;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<GetTraineeProfileResponseDTO> selectTraineeProfile(@PathVariable("id") UUID id, @RequestBody GetTraineeProfileRequestDTO requestDTO) {
-        return new ResponseEntity<>(traineeService.selectTraineeProfileByUserName(id, requestDTO), HttpStatus.OK);
-    }
-
     @PostMapping("/save")
     public ResponseEntity<TraineeRegistrationResponseDTO> saveTrainee(@RequestBody TraineeRegistrationRequestDTO requestDTO) {
         return new ResponseEntity<>(traineeService.saveTrainee(requestDTO), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GetTraineeProfileResponseDTO> selectTraineeProfile(@PathVariable("id") UUID id, @RequestBody GetTraineeProfileRequestDTO requestDTO) {
+        return new ResponseEntity<>(traineeService.selectTraineeProfileByUserName(id, requestDTO), HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")

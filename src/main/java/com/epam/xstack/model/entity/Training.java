@@ -21,13 +21,13 @@ public class Training {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "trainee_id" ,referencedColumnName = "id")
-    private Trainee traineeId;
+    private Trainee trainee;
     @ManyToOne
     @JoinColumn(name = "trainer_id", referencedColumnName = "id")
-    private Trainer trainerId;
+    private Trainer trainer;
     @Column(name = "training_name")
     private String trainingName;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "training_type_id")
     private TrainingType trainingType;
     @Column(name = "training_date")

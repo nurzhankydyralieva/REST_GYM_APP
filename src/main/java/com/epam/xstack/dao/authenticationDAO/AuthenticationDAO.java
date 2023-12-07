@@ -9,5 +9,6 @@ import java.util.UUID;
 public interface AuthenticationDAO {
     AuthenticationResponseDTO authenticateLogin(UUID id, AuthenticationRequestDTO requestDTO);
 
-    AuthenticationResponseDTO authenticationChangeLogin(UUID id, AuthenticationChangeLoginRequestDTO requestDTO);
+   AuthenticationResponseDTO authenticationChangeLogin(UUID id, AuthenticationChangeLoginRequestDTO requestDTO);
+
 }

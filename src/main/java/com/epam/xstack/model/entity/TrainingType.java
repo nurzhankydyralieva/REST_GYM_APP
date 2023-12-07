@@ -19,4 +19,6 @@ public class TrainingType {
     private Long id;
     @Column(name = "training_type_name")
     private String trainingTypName;
+    @OneToOne(mappedBy = "specialization")
+    private Trainer trainer;
 }
